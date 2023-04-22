@@ -2,13 +2,16 @@ import express from "express"
 const app = express()
 
 // request, response test
-app.get("/test", (req, res) => {
-    res.json({
-        msg: "data get all"
-    })
-})
+// app.get("/test", (req, res) => {
+//     res.json({
+//         msg: "data get all"
+//     })
+// })
 
 
+import practiceRouter from "./routing/practice.js"
+
+app.use("/practice",practiceRouter)
 
 const port = 8080
 app.listen(port, console.log("server start"))
