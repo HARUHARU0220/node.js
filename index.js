@@ -1,4 +1,5 @@
 import express from "express"
+import bodyParser from "body-parser";
 const app = express()
 
 // request, response test
@@ -10,6 +11,15 @@ const app = express()
 
 
 import practiceRouter from "./routing/practice.js"
+
+
+//middleware(설정)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
+
+
 
 app.use("/practice",practiceRouter)
 

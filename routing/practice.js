@@ -15,8 +15,17 @@ routing.get("/new",(req,res) => {
 // practice를 등록하는 API
 
 routing.post("/create",(req,res) =>{
+
+    const newPractice = {
+        name: req.body.practiceName,
+        age: req.body.practiceAge,
+        address: req.body.practiceAddress,
+        email: req.body.practiceEmail
+    }
+
     res.json({
-        msg: "create practice"
+        msg: "create practice",
+        result: newPractice
     })
 })
 
