@@ -1,7 +1,11 @@
 import express from "express"
 import bodyParser from "body-parser";
 import morgan from "morgan"
+import dotenv from "dotenv"
 const app = express()
+
+dotenv.config()
+
 
 // request, response test
 // app.get("/test", (req, res) => {
@@ -23,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use("/practice",practiceRouter)
 app.use("/order",orderRouter)
-const port = 8080
+const port = process.env.PORT
 app.listen(port, console.log(`server started at ${port}`))
 
 //1. 위에서 아래로 인식한다
