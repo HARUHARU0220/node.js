@@ -11,7 +11,7 @@ routing.get("/",(req,res)=>{
 routing.post("/", (req,res)=>{
 
     const newOrder = {
-        id: req.body.orderId,
+        product : req.body.orderProduct,
         password: req.body.orderPassword
     }
 

@@ -1,4 +1,5 @@
 import express, {} from "express";
+import practiceModel from "../models/practice.js";
 const routing = express.Router()
 
 
@@ -6,6 +7,7 @@ const routing = express.Router()
 // practice와 관련된 데이터를 불러오고 등록하고 수정하고 삭제하는 기능을 만든다.
 
 // practice를 가져오는 API
+
 routing.get("/new",(req,res) => {
     res.json({
         msg: "new practice"
@@ -14,14 +16,21 @@ routing.get("/new",(req,res) => {
 
 // practice를 등록하는 API
 
-routing.post("/create",(req,res) =>{
+routing.post("/create",async (req,res) =>{
 
-    const newPractice = {
-        name: req.body.practiceName,
-        age: req.body.practiceAge,
-        address: req.body.practiceAddress,
+    // const newPractice = {
+    //     title: req.body.practiceTitle,
+    //     description: req.body.practiceDescription,
+    //     email: req.body.practiceEmail
+    // }
+
+    const newPractice = new practiceModel({
+        title: req.body.practiceTitle,
+        description: req.body.practiceDescription,
         email: req.body.practiceEmail
-    }
+    })
+
+    await newPractice.save()
 
     res.json({
         msg: "create practice",
