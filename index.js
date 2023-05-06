@@ -23,6 +23,7 @@ connectDB()
 
 import practiceRouter from "./routing/practice.js"
 import orderRouter from "./routing/order.js"
+import productRouter from "./routing/product.js"
 
 //middleware(설정)
 app.use(morgan("dev"))
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use("/practice",practiceRouter)
 app.use("/order",orderRouter)
+app.use("/product",productRouter)
 const port = process.env.PORT
 app.listen(port, console.log(`server started at ${port}`))
 
