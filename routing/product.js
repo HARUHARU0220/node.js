@@ -43,6 +43,24 @@ routing.post("/",async (req,res)=>{
     })
 })
 
+// 특정 프로덕트를 삭제하는 api
+routing.delete("/:productid", async (req,res)=> {
+    await productModel.findByIdAndDelete(req.params.productid)
+    res.json({
+        msg: `delete product ${req.params.productid}`,
+
+    })
+})
+
+//전체 프로덕트를 삭제하는 api
+routing.delete("/", async (req, res) => {
+    await productModel.deleteMany()
+    res.json({
+        msg: "deleted all products"
+    })
+})
+
+
 
 export default routing
 
