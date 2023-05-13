@@ -61,6 +61,30 @@ routing.delete("/", async (req, res) => {
 })
 
 
+// 특정 프로덕트를 수정하는 api (수정하고자 하는 대상, 수정하고자 하는 내용)
+routing.put("/:productid", async (req, res) => {
+
+    const product = await productModel.findById(req.params.productid)
+
+    // if else 조건문, 삼항연산자 알아볼 것
+
+
+    if (product) {
+        product.name = req.body.productName ? req.body.productName : product.name
+        product.price = req.body.productPrice ? req.body.productPrice : product.price
+        product.description = req.body.productDescription ? req.body.productDescription : product.description
+        product.stock = req.body.productStock ? req.body.productStock : product.stock
+
+    }
+    const updatedProduct = await product.save()
+
+
+    res.json({
+        msg: `updated product at ${req.params.productid}`,
+        product: updatedProduct
+    })
+})
+
 
 export default routing
 
