@@ -4,9 +4,23 @@ const routing = express.Router()
 
 
 // 회원 가입
-routing.post("/register",(req,res) => {
+// id, password, 이름, 생년월일, 성별, 이메일, 휴대전화
+routing.post("/register",async (req,res) => {
+    const newUser = new userModel ({
+        userId: req.body.userId,
+        password: req.body.userPassword,
+        userName: req.body.userName,
+        gender: req.body.userGender,
+        email: req.body.userEmail,
+        phone: req.body.userPhone
+    })
+
+    await newUser.save()
+
+
     res.json({
-        msg: "Register"
+        msg: "Register",
+        result: newUser
     })
 })
 
