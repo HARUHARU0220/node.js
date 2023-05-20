@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 
 const orderSchema = mongoose.Schema(
-    {},
+    {
+        product: String,
+        qty: Number,
+        memo: String,
+        address: String
+    },
     {
         timestamps: true
     }
