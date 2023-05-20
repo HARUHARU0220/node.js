@@ -4,7 +4,7 @@ const routing =express.Router()
 
 
 routing.get("/",async (req,res)=>{
-    const orders = await orderModel.find()
+    const orders = await orderModel.find().populate("product", ["name", "price"])
     res.json({
         msg: "new order",
         orders: orders
@@ -12,7 +12,7 @@ routing.get("/",async (req,res)=>{
 })
 
 routing.get("/:orderid", async (req,res) => {
-    const order = await orderModel.findById(req.params.orderid)
+    const order = await orderModel.findById(req.params.orderid).populate("product")
     res.json({
         msg: "Order detail get",
         order : order

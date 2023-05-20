@@ -2,10 +2,21 @@ import mongoose from "mongoose";
 
 const orderSchema = mongoose.Schema(
     {
-        product: String,
-        qty: Number,
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "product",
+            required : true
+        },
+        qty: {
+            type: Number,
+            default: 1
+        },
         memo: String,
-        address: String
+
+        address: {
+            type: String,
+            required: true
+        }
     },
     {
         timestamps: true
