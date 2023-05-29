@@ -87,4 +87,3 @@ routing.put("/:productid", async (req, res) => {
 
 
 export default routing
-

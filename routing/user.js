@@ -41,10 +41,4 @@ routing.get("/profile", (req,res) => {
 })
 
 
-
-
-
-
-
-
 export default routing
